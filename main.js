@@ -50,7 +50,7 @@ function keepOriginalVerbs() {
             let verbNotTranslated = $(this).clone();
             verbNotTranslated.html('&nbsp(' + verbNotTranslated.text() + ')&nbsp');
             verbNotTranslated.addClass('notranslate'); // Prevent Google to translate this span.
-            verbNotTranslated.insertAfter($(this));
+            verbNotTranslated.insertBefore($(this));
         }
     })
 }

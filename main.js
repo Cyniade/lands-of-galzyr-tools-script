@@ -48,7 +48,7 @@ function keepOriginalVerbs() {
         if (!$(this).hasClass('processed')) {
             $(this).addClass('processed');
             let verbNotTranslated = $(this).clone();
-            verbNotTranslated.html('&nbsp(' + verbNotTranslated.text() + ')&nbsp');
+            verbNotTranslated.html('&nbsp{' + verbNotTranslated.text() + '}&nbsp');
             verbNotTranslated.addClass('notranslate'); // Prevent Google to translate this span.
             verbNotTranslated.insertBefore($(this));
         }

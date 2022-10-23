@@ -19,7 +19,7 @@ function main(data){
         'use strict'
 
         $(document).click(function(){
-            preventVerbsTranslation();
+            keepOriginalVerbs();
         })
     });
 }
@@ -41,12 +41,16 @@ function httpGET(url, callback, responseType='text') {
 httpGET('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', main);
 
 /**
- * Add class to prevent translation from web browser.
+ * Keep original text from verb next to the translated one.
  */
-function preventVerbsTranslation() {
-    $('.verb').each(function() {
-        if(!$(this).hasClass('notranslate')) {
-            $(this).addClass('notranslate').append("&nbsp;");
+function keepOriginalVerbs() {
+    $('span.verb').each(function() {
+        if (!$(this).hasClass('processed')) {
+            $(this).addClass('processed');
+            let verbNotTranslated = $(this).clone();
+            verbNotTranslated.html('&nbsp(' + verbNotTranslated.text() + ')&nbsp');
+            verbNotTranslated.addClass('notranslate'); // Prevent Google to translate this span.
+            verbNotTranslated.insertAfter($(this));
         }
     })
 }

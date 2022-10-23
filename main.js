@@ -23,7 +23,7 @@ function main(data){
         })
     });
 }
-    
+
 // Get html text of the url
 // main runs as soon as the site responds with status 200
 function httpGET(url, callback, responseType='text') {
@@ -42,7 +42,6 @@ httpGET('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', main);
 
 /**
  * Add class to prevent translation from web browser.
- * 
  */
 function preventVerbsTranslation() {
     $('.verb').each(function() {

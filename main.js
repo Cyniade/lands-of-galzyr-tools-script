@@ -7,50 +7,26 @@
 // @match        https://stories.daimyria.fi
 // @icon         https://stories.daimyria.fi/img/icon-512.png
 // ==/UserScript==
-function main(data){
-    // append jquery script to head
-    const head = document.head || document.getElementsByTagName('head')[0],
-    s = document.createElement('script');
-    s.type = 'text/javascript';
-    s.innerHTML = data;
-    head.appendChild(s);
-    // if page is fully loaded execute your program
-    $(document).ready(function() {
-        'use strict'
 
-        $(document).click(function(){
-            keepOriginalVerbs();
-        })
-    });
-}
+(function() {
+    'use strict';
+    document.addEventListener("click", function(){preventVerbsTranslation();});
+})();
 
-// Get html text of the url
-// main runs as soon as the site responds with status 200
-function httpGET(url, callback, responseType='text') {
-    var request = new XMLHttpRequest();
-    request.responseType = responseType;
-    request.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            callback(this.response);
-        }
-    };
-    request.open('GET', url, true);
-    request.send(null);
-};
-// Type in full url and the callback function
-httpGET('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', main);
 
 /**
  * Keep original text from verb next to the translated one.
+ *
  */
-function keepOriginalVerbs() {
-    $('span.verb').each(function() {
-        if (!$(this).hasClass('processed')) {
-            $(this).addClass('processed');
-            let verbNotTranslated = $(this).clone();
-            verbNotTranslated.html('&nbsp{' + verbNotTranslated.text() + '}&nbsp');
-            verbNotTranslated.addClass('notranslate'); // Prevent Google to translate this span.
-            verbNotTranslated.insertBefore($(this));
+function preventVerbsTranslation() {
+    let verbElems = document.getElementsByClassName("verb");
+    for (var i = 0; i < verbElems.length; i++) {
+        if(!verbElems[i].classList.contains('processed')) {
+            verbElems[i].classList.add('processed');
+            let originVerb = verbElems[i].cloneNode(true);
+            originVerb.classList.add('notranslate');
+            originVerb.textContent = ' {' + originVerb.textContent + '} ';
+            verbElems[i].before(originVerb);
         }
-    })
+    }
 }

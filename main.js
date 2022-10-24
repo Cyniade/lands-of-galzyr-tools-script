@@ -10,7 +10,7 @@
 
 (function() {
     'use strict';
-    document.addEventListener("click", function(){preventVerbsTranslation();});
+    document.addEventListener("click", () => preventVerbsTranslation());
 })();
 
 

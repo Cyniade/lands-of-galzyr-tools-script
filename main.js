@@ -7,6 +7,7 @@
 // @match        https://stories.daimyria.fi
 // @icon         https://stories.daimyria.fi/img/icon-512.png
 // ==/UserScript==
+// Test.
 
 (function() {
     'use strict';

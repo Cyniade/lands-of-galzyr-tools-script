@@ -2,13 +2,9 @@ name: Check do not merge
 
 on:
   pull_request_target:
+    types: [opened, labeled, unlabeled]
     branches:
       - main
-    types:
-      - opened
-      - labeled
-      - unlabeled
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 

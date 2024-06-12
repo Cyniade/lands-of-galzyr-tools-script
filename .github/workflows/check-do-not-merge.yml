@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  fail-for-do-not-merge:
+  check-do-not-merge:
     if: contains(github.event.pull_request.labels.*.name, 'do not merge')
     runs-on: ubuntu-latest
     steps:

@@ -3,6 +3,7 @@ name: Check do not merge
 on:
   # Check label during lifetime of a pull request.
   pull_request:
+    branches: [main]
     types: [opened, labeled, unlabeled]
 
   # Allows you to run this workflow manually from the Actions tab

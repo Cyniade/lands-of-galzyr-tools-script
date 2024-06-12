@@ -2,8 +2,8 @@ name: Check do not merge
 
 on:
   pull_request:
-    branches:
-      - main
+    branches-ignore:
+      - prod
     types:
       - opened
       - labeled

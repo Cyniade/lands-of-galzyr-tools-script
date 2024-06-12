@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Lands of Galzyr - Tools
 // @namespace    https://stories.daimyria.fi
-// @version      0.2
+// @version      0.2 test2
 // @description  Provide tools for Lands of Galzyr PWA.
 // @author       https://github.com/Cyniade
 // @match        https://stories.daimyria.fi
